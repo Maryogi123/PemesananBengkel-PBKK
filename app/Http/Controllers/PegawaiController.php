@@ -13,12 +13,12 @@ class PegawaiController extends Controller
     public function index(): View
     {
         $pegawai = Pegawai::latest()->paginate(10);
-        return view('pegawai.index', compact('pegawai'));
+        return view('levelAdmin.pegawai.index', compact('pegawai'));
     }
 
     public function create()
     {
-        return view('pegawai.create');
+        return view('levelAdmin.pegawai.create');
     }
 
     public function store(Request $request)
@@ -33,7 +33,7 @@ class PegawaiController extends Controller
 
         Pegawai::create($request->all());
 
-        return redirect()->route('pegawaiBengkel.index')
+        return redirect()->route('admin.pegawai.index')
             ->with('success', 'Pegawai berhasil ditambahkan.');
     }
 
@@ -41,14 +41,14 @@ class PegawaiController extends Controller
     {
         $pegawai = Pegawai::findOrFail($id);
 
-        return view('pegawai.show', compact('pegawai'));
+        return view('levelAdmin.pegawai.show', compact('pegawai'));
     }
 
     public function edit(string $id)
     {
         $pegawai = Pegawai::findOrFail($id);
 
-        return view('pegawai.edit', compact('pegawai'));
+        return view('levelAdmin.pegawai.edit', compact('pegawai'));
     }
 
     public function update(Request $request, $id): RedirectResponse
@@ -64,7 +64,7 @@ class PegawaiController extends Controller
         $pegawai = Pegawai::findOrFail($id);
         $pegawai->update($request->all());
 
-        return redirect()->route('pegawaiBengkel.index')
+        return redirect()->route('admin.pegawai.index')
             ->with('success', 'Data pegawai berhasil diubah!.');
     }
 
@@ -72,6 +72,6 @@ class PegawaiController extends Controller
     {
         $pegawai = Pegawai::findOrFail($id);
         $pegawai->delete();
-        return redirect()->route('pegawaiBengkel.index')->with(['success' => 'Data Pegawai Berhasil Dihapus!']);
+        return redirect()->route('admin.pegawai.index')->with(['success' => 'Data Pegawai Berhasil Dihapus!']);
     }
 }

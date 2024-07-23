@@ -14,12 +14,12 @@ class CustomerController extends Controller
     public function index(): View
     {
         $customers = Customer::latest()->paginate(10);
-        return view('customers.index', compact('customers'));
+        return view('levelAdmin.customers.index', compact('customers'));
     }
 
     public function create()
     {
-        return view('customers.create');
+        return view('levelAdmin.customers.create');
     }
 
     public function store(Request $request)
@@ -32,7 +32,7 @@ class CustomerController extends Controller
 
         Customer::create($request->all());
 
-        return redirect()->route('customers.index')
+        return redirect()->route('admin.customer.index')
             ->with('success', 'Customer berhasil ditambahkan.');
     }
 
@@ -40,13 +40,13 @@ class CustomerController extends Controller
     {
         $customers = Customer::findOrFail($id);
 
-        return view('customers.show', compact('customers'));
+        return view('levelAdmin.customers.show', compact('customers'));
     }
     public function edit(string $id)
     {
         $customers = Customer::findOrFail($id);
 
-        return view('customers.edit', compact('customers'));
+        return view('levelAdmin.customers.edit', compact('customers'));
     }
 
     public function update(Request $request, $id): RedirectResponse
@@ -60,7 +60,7 @@ class CustomerController extends Controller
         $customers = Customer::findOrFail($id);
         $customers->update($request->all());
 
-        return redirect()->route('customers.index')
+        return redirect()->route('admin.customer.index')
             ->with('success', 'Data customer berhasil diubah!.');
     }
 
@@ -68,6 +68,6 @@ class CustomerController extends Controller
     {
         $customers = Customer::findOrFail($id);
         $customers->delete();
-        return redirect()->route('customers.index')->with(['success' => 'Data Customer Berhasil Dihapus!']);
+        return redirect()->route('admin.customer.index')->with(['success' => 'Data Customer Berhasil Dihapus!']);
     }
 }

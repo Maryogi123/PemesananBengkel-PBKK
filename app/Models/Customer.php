@@ -19,4 +19,8 @@ class Customer extends Authenticatable
     ];
 
     public $timestamp = false;
+
+    public function dataTambahanKeluhan(){
+        return $this->hasMany(Keluhan::class,'customer_id');
+    }
 }

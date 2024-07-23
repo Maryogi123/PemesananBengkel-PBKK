@@ -20,4 +20,8 @@ class Pegawai extends Model
     ];
 
     public $timestamp = false;
+
+    public function dataTambahanKeluhan(){
+        return $this->hasMany(Keluhan::class,'id_pegawai');
+    }
 }
