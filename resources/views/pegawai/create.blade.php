@@ -13,7 +13,7 @@
         <div class="row">
             <div class="col-md-12">
                 <div>
-                    <h3 class="text-center my-4">Masukan Data Komputer</h3>
+                    <h3 class="text-center my-4">Masukan Data Pegawai</h3>
                     <hr>
                 </div>
                 <div class="card border-0 shadow-sm rounded">
